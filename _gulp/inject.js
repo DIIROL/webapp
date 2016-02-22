@@ -12,7 +12,7 @@ var _ = require('lodash');
 
 // common options for all injects
 var options = {
-    empty        : true,
+    empty        : false,
     addRootSlash : false,
     relative     : true
     //ignorePath  : '.tmp'
@@ -41,7 +41,7 @@ gulp.task('inject:Js', function () {
 gulp.task('inject:Css', function () {
     console.log('_______ inject:Css _______');
 
-    var css = gulp.src( CONST.SRC.css ,{read : false});
+    var css = gulp.src(CONST.SRC.css ,{read : false});
     return gulp.src(CONST.SRC.indexHtml)
                .pipe(inject(css, options))
                // To src/index.html

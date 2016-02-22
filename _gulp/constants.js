@@ -8,7 +8,8 @@
 var _ = (function () {
     var self = {
         app        : 'app',
-        tmp        : '.tmp',
+        tmp        : 'app/.tmp',
+
         css        : function () {
             return this.tmp + '/css'
         },
