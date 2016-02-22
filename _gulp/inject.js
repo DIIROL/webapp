@@ -41,7 +41,7 @@ gulp.task('inject:Js', function () {
 gulp.task('inject:Css', function () {
     console.log('_______ inject:Css _______');
 
-    var css = gulp.src(CONST.SRC.css ,{read : false});
+    var css = gulp.src(CONST.SRC.css, {read : false});
     return gulp.src(CONST.SRC.indexHtml)
                .pipe(inject(css, options))
                // To src/index.html
@@ -58,7 +58,7 @@ gulp.task('inject:Sass', function () {
 
     var sass = gulp.src(CONST.SRC.sass);
     return gulp.src(CONST.SRC.mainSass)
-               .pipe(inject(sass, options))
+               .pipe(inject(sass, {empty : true}))
                // Return to the same place (it's same file)
                .pipe(gulp.dest(CONST.PATH.styles))
 });
