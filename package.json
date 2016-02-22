@@ -1,0 +1,23 @@
+{
+  "name": "default",
+  "version": "1.0.0",
+  "description": "Defarul template for webapp",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dirol2009@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-inject": "^3.0.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-sync": "^0.1.4",
+    "gulp-watch": "^4.3.5",
+    "lodash": "^4.5.1",
+    "wiredep": "^3.0.0"
+  }
+}

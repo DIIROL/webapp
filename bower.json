@@ -1,0 +1,23 @@
+{
+  "name": "Default",
+  "authors": [
+    "DIIROL <dirol2009@gmail.com>"
+  ],
+  "description": "Init template for webapp",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "bootstrap-sass": "^3.3.6"
+  }
+}
