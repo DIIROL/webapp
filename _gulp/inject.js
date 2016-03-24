@@ -53,15 +53,19 @@ gulp.task('inject:Css', function () {
 
 /*  # Scss injection
 ====================================================*/
-gulp.task('inject:Sass', function () {
-    console.log('_______ inject:Sass _______');
+gulp.task( 'inject:Sass', function () {
+    console.log( '_______ inject:Sass _______' );
 
-    var sass = gulp.src(CONST.SRC.sass);
-    return gulp.src(CONST.SRC.mainSass)
-               .pipe(inject(sass, {empty : true, relative: true}))
+    var sass      = gulp.src( CONST.SRC.sass, { read : false } );
+    var sassMixin = gulp.src( CONST.PATH.styles + '/mixins/*.scss', { read : false } );
+
+    return gulp.src( CONST.SRC.mainSass )
+               .pipe( inject( sass, { empty : true, relative : true } ) )
+               .pipe( inject( sassMixin, { empty : true, relative : true, starttag : '/* inject:mixin:scss */' } ) )
                // Return to the same place (it's same file)
-               .pipe(gulp.dest(CONST.PATH.styles))
-});
+               .pipe( gulp.dest( CONST.PATH.styles ) )
+} );
+
 
 
 
