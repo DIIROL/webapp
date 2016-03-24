@@ -32,6 +32,7 @@ gulp.task('styles', ['clean:Css'], function () {
                .pipe(sass({outputStyle : 'nested'})
                    .on('error', function (err) {
                        console.log(err);
+                        this.emit( 'end' );
                    }))
                .pipe(autoPrefix({browsers : ['last 10 versions', 'IE 9']}))
                // to .tmp/css
