@@ -58,7 +58,7 @@ gulp.task('inject:Sass', function () {
 
     var sass = gulp.src(CONST.SRC.sass);
     return gulp.src(CONST.SRC.mainSass)
-               .pipe(inject(sass, {empty : true}))
+               .pipe(inject(sass, {empty : true, relative: true}))
                // Return to the same place (it's same file)
                .pipe(gulp.dest(CONST.PATH.styles))
 });
