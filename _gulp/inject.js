@@ -4,7 +4,8 @@
 var wiredep = require('wiredep').stream,
     gulp    = require('gulp'),
     inject  = require('gulp-inject'),
-    CONST   = require('../_gulp/constants');
+    plumber = require('gulp-plumber');
+CONST       = require('../_gulp/constants');
 
 
 var _ = require('lodash');
@@ -14,7 +15,7 @@ var _ = require('lodash');
 var options = {
     empty        : false,
     addRootSlash : false,
-    relative     : true
+    relative     : false
     //ignorePath  : '.tmp'
 };
 
@@ -26,15 +27,15 @@ gulp.task('inject:Js', function () {
     console.log('_______ inject:js _______');
 
     var js = gulp.src(CONST.SRC.js, { read : false });
-    return gulp.src(CONST.SRC.indexHtml)
-               .pipe(wiredep({ devDependencies : false }))
-               .on('error', function (err,cn, cb) {
+    return gulp.src(CONST.SRC.index)
+               .pipe(plumber(function (err) {
                    console.log(err);
-               })
+               }))
+               .pipe(wiredep({ devDependencies : false }))
                // Custom scripts from assets/ja
-               .pipe(inject(js, options))
+               .pipe(inject(js, { relative : false }))
                // To the same
-               .pipe(gulp.dest(CONST.PATH.tmp));
+               .pipe(gulp.dest(CONST.PATH.app));
 });
 
 
@@ -45,10 +46,10 @@ gulp.task('inject:Css', function () {
     console.log('_______ inject:Css _______');
 
     var css = gulp.src(CONST.SRC.css, { read : false });
-    return gulp.src(CONST.SRC.indexHtml)
-               .pipe(inject(css, options))
+    return gulp.src(CONST.SRC.index)
+               .pipe(inject(css, { relative : false }))
                // To src/index.html
-               .pipe(gulp.dest(CONST.PATH.tmp))
+               .pipe(gulp.dest(CONST.PATH.app))
 });
 
 

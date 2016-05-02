@@ -1,5 +1,4 @@
-
-var gulp = require('gulp'),
+var gulp     = require('gulp'),
     gulpSync = require('gulp-sync')(gulp);
 
 /*  # Inject
@@ -23,7 +22,7 @@ require('./_gulp/watcher');
 /*  start server temporary builds
 ---------------------------------*/
 gulp.task('server:Run', function () {
-    gulp.start(gulpSync.sync(['inject:Sass', 'styles','inject:Css', 'inject:Js', 'server', 'watch']));
+    gulp.start(gulpSync.sync([ 'jade', 'inject:Sass', 'sass', 'inject:Css', 'inject:Js', 'server', 'watch' ]));
 });
 
 

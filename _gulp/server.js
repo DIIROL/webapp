@@ -10,14 +10,16 @@ var browserSync = require('browser-sync').create(),
 /*  # Server settings
 ====================================================*/
 gulp.task('server', function () {
+    console.log('Server start');
     browserSync.init({
         startPath: '/',
         server   : {
-            baseDir: CONST.PATH.app,
+            baseDir: CONST.PATH.tmp,
             routes : {
                 '/bower_components': 'bower_components',
                 '/test'            : 'test',
-                '/src'             : 'src'
+                '/src'             : 'src',
+                '/app' : 'app'
             }
         },
         notify   : false

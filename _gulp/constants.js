@@ -5,8 +5,8 @@
  */
 
 const app        = 'app',
-      tmp        = `.tmp`,
-      css        = `.tmp/css`,
+      tmp        = `${app}/.tmp`,
+      css        = `${app}/.tmp/css`,
       components = `${app}/components`,
       assets     = `${app}/assets`,
       styles     = `${assets}/styles`,
@@ -29,11 +29,11 @@ module.exports.PATH = {
 };
 
 module.exports.SRC = {
-    sass      : [ styles + '/*.scss', '!' + styles + '/main.scss', components + '/**/*.scss' ],
-    css       : [ css + '/*.css' ],
-    js        : [ js + '/*.js' ],
-    mainSass  : styles + '/main.scss',
-    indexHtml : tmp + '/index.html',
-    jade      : app + '/**/*.jade'
+    sass     : [ styles + '/*.scss', '!' + styles + '/main.scss', components + '/**/*.scss' ],
+    css      : [ css + '/*.css' ],
+    js       : [ js + '/*.js' ],
+    mainSass : styles + '/main.scss',
+    index    : app + '/index.jade',
+    jade     : app + '/**/*.jade'
 };
 
