@@ -1,7 +1,6 @@
 /* =================================================================== *\
     #Bootstrap
 \* =================================================================== */
-@import "./bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 /* =================================================================== *\
     #Custom
@@ -9,4 +8,6 @@
 /* inject:scss */
 
 /* endinject */
-
+body{
+  background-color: aliceblue;
+}

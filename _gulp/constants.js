@@ -4,60 +4,36 @@
  * It's could be ugly but i think it's useful
  */
 
+const app        = 'app',
+      tmp        = `.tmp`,
+      css        = `.tmp/css`,
+      components = `${app}/components`,
+      assets     = `${app}/assets`,
+      styles     = `${assets}/styles`,
+      js         = `${assets}/js`,
+      fonts      = `${assets}/fonts`,
+      images     = `${assets}/images`;
 
-var _ = (function () {
-    var self = {
-        app        : 'app',
-        tmp        : 'app/.tmp',
 
-        css        : function () {
-            return this.tmp + '/css'
-        },
-        components : function () {
-            return this.app + '/components'
-        },
-        assets     : function () {
-            return this.app + '/assets'
-        },
-        styles     : function () {
-            return this.assets() + '/styles'
-        },
-        js         : function () {
-            return this.assets() + '/js'
-        },
-        fonts      : function () {
-            return this.assets() + '/fonts'
-        }
-    };
-    return {
-        app        : self.app,
-        tmp        : self.tmp,
-        css        : self.css(),
-        components : self.components(),
-        assets     : self.assets(),
-        styles     : self.styles(),
-        js         : self.js(),
-        fonts      : self.fonts()
-    }
-})();
 
 
 module.exports.PATH = {
-    tmp        : _.tmp,
-    app        : _.app,
-    css        : _.css,
-    assets     : _.assets,
-    styles     : _.styles,
-    js         : _.js,
-    fonts      : _.fonts,
-    components : _.components
+    tmp        : tmp,
+    app        : app,
+    css        : css,
+    assets     : assets,
+    styles     : styles,
+    js         : js,
+    fonts      : fonts,
+    components : components
 };
 
 module.exports.SRC = {
-    sass      : [_.styles + '/*.scss', '!' + _.styles + '/main.scss', _.components + '/**/*.scss'],
-    css       : [_.css + '/*.css'],
-    js        : [_.js + '/*.js'],
-    mainSass  : _.styles + '/main.scss',
-    indexHtml : _.app + '/index.html'
+    sass      : [ styles + '/*.scss', '!' + styles + '/main.scss', components + '/**/*.scss' ],
+    css       : [ css + '/*.css' ],
+    js        : [ js + '/*.js' ],
+    mainSass  : styles + '/main.scss',
+    indexHtml : tmp + '/index.html',
+    jade      : app + '/**/*.jade'
 };
 

@@ -9,17 +9,14 @@ var gulp  = require('gulp'),
 
 gulp.task('watch', function () {
 
-    /*===================================================================*\
-        # SASS only
-    \*===================================================================*/
-    /**
-     * no new sass files only compile and reload
-     */
-    gulp.task('sass:Change', ['styles'], function () {
+    /*
+        # Styles
+    \* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+    gulp.task('sass:Change', ['sass'], function () {
         gulp.start('server:Reload')
     });
 
-
+    // sass
     watch(CONST.SRC.sass)
         .on('add', function () {
             gulp.start('inject:Sass')
@@ -37,12 +34,9 @@ gulp.task('watch', function () {
         });
 
 
-
-
-    /*===================================================================*\
+    /*
         # Javascript
-    \*===================================================================*/
-
+    \* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
     watch(CONST.SRC.js)
         .on('add', function () {
             gulp.start('inject:Js')
@@ -54,13 +48,19 @@ gulp.task('watch', function () {
             gulp.start('server:Reload')
         });
 
-    /*===================================================================*\
-        # Html
-    \*===================================================================*/
 
-    watch([CONST.SRC.indexHtml, CONST.PATH.components + '/**/*.html'], function () {
-        gulp.start('server:Reload');
+    /*
+        # Jade
+    \* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+    gulp.watch(CONST.SRC.jade, function () {
+        gulp.start('jade', [ 'server:Reload' ]);
     });
+    /*
+        # Html
+    \* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+    //watch([CONST.SRC.indexHtml, CONST.PATH.components + '/**/*.html'], function () {
+    //    gulp.start('server:Reload');
+    //});
 
 });
 

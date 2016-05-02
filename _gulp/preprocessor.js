@@ -1,15 +1,25 @@
-/**
- * Created by Dirol on 07.01.2016.
- */
-
-
-
-var sass       = require('gulp-sass'),
+var jade       = require('gulp-jade'),
     gulp       = require('gulp'),
-    CONST      = require('../_gulp/constants'),
+    sass       = require('gulp-sass'),
     clean      = require('gulp-clean'),
-    autoPrefix = require('gulp-autoprefixer');
+    autoPrefix = require('gulp-autoprefixer'),
+    CONST      = require('./constants');
 
+
+/*
+    # Jade
+\* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+gulp.task('jade', function () {
+
+    gulp.src(CONST.SRC.jade)
+        .pipe(jade({ pretty : true }))
+        .pipe(gulp.dest(CONST.PATH.tmp));
+});
+
+/*
+    # Sass
+\* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
 
 /*  # Cleans css files
@@ -25,16 +35,16 @@ gulp.task('clean:Css', function () {
 /**
  * Compile SASS to css
  */
-gulp.task('styles', ['clean:Css'], function () {
+gulp.task('sass', [ 'clean:Css' ], function () {
     console.log('_______ sass _______');
 
     return gulp.src(CONST.SRC.mainSass)
-               .pipe(sass({outputStyle : 'nested'})
+               .pipe(sass({ outputStyle : 'nested' })
                    .on('error', function (err) {
                        console.log(err);
-                        this.emit( 'end' );
+                       this.emit('end');
                    }))
-               .pipe(autoPrefix({browsers : ['last 10 versions', 'IE 9']}))
+               .pipe(autoPrefix({ browsers : [ 'last 10 versions', 'IE 9' ] }))
                // to .tmp/css
                .pipe(gulp.dest(CONST.PATH.css))
 });
